@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Stats = () => {
+const Stats = ({numverOfItem, packedItems}) => {
   return (
     <footer className='stats'>
-        <em>😍You have x items on your list, and you already packed x (x%)</em>
+        <em>😍You have {numverOfItem || 0} items on your list, and you already packed {packedItems || 0} ({Math.round((packedItems / numverOfItem ) * 100)} %)</em>
     </footer>
   )
 }

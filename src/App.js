@@ -6,6 +6,10 @@ import Stats from './components/Stats/Stats';
 
 function App() {
   const [items, setItems] = useState([]);
+  const packedItems = items.filter((item) => item.packed === true).length;
+  console.log(packedItems, 'packed')
+  const numverOfItem=items.length;
+  console.log(numverOfItem)
   const handleAddItem = (item) => {
     setItems((items)=> [...items, item])
   }
@@ -15,7 +19,7 @@ function App() {
       <Logo/>
       <Form handleAddItem={handleAddItem}/>
       <PackegingList initialItems={items} setItems={setItems}/>
-      <Stats/>
+      <Stats numverOfItem={numverOfItem} packedItems={packedItems}/>
     </>
   );
 }

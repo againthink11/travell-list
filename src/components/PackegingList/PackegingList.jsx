@@ -1,6 +1,13 @@
 import React from 'react'
+import { useState } from 'react'
 
 const PackegingList = ({initialItems, setItems}) => {
+    const clearList = () => {
+        const confirmed = window.confirm('Are you sure you want to clear list?')
+        if (confirmed) setItems([])
+    }
+    const [sortBy, setSortBy] = useState('input');
+    console.log(sortBy)
     console.log(initialItems)
     const deleteFromList = (id) => {
         setItems(initialItems.filter((items) => items.id != id))
@@ -25,6 +32,14 @@ const PackegingList = ({initialItems, setItems}) => {
                 </li>)
             })}
         </ul>
+        <div className='actions'>
+            <select value={sortBy} onChange={e=>setSortBy(e.target.value)}>
+                <option value="input">Sort By Input</option>
+                <option value="description">Sort By Description</option>
+                <option value="packed">Sort By Packed Status</option>
+            </select>
+            <button onClick={clearList}>Clear List</button>
+        </div>
     </div>
   )
 }
